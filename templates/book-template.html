@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{BOOK_NAME}} — Solutions | Herbie's Puzzles</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #333;
+            background: #fafafa;
+            padding: 1.5rem 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        h1 { font-size: 1.4rem; margin-bottom: 0.25rem; }
+        .subtitle { color: #666; font-size: 0.95rem; margin-bottom: 1.25rem; }
+        nav { margin-bottom: 2rem; }
+        nav .label { font-weight: 600; font-size: 0.9rem; margin-bottom: 0.5rem; }
+        .puzzle-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+        .puzzle-links a {
+            display: inline-block;
+            width: 2.5rem;
+            height: 2.5rem;
+            line-height: 2.5rem;
+            text-align: center;
+            background: #e8f0fe;
+            color: #2563eb;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .puzzle-links a:hover { background: #c7d8f8; }
+        .puzzle-section {
+            margin-bottom: 2.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e0e0e0;
+        }
+        .puzzle-section:first-of-type { border-top: none; }
+        .puzzle-section h2 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: #222;
+        }
+        .grid-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin-bottom: 0.75rem;
+        }
+        table.grid {
+            border-collapse: collapse;
+            font-family: "Courier New", Courier, monospace;
+            font-size: 1rem;
+            line-height: 1;
+        }
+        table.grid td {
+            width: 2rem;
+            height: 2rem;
+            text-align: center;
+            vertical-align: middle;
+            border: 1px solid #ddd;
+            color: #bbb;
+        }
+        table.grid td.hl {
+            color: #111;
+            font-weight: 700;
+            background: #fff3cd;
+        }
+        .word-list {
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.6;
+        }
+        .word-list strong { color: #333; }
+        .back-top {
+            display: inline-block;
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: #2563eb;
+            text-decoration: none;
+        }
+        .back-top:hover { text-decoration: underline; }
+        footer {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e0e0e0;
+            color: #999;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body id="top">
+    <h1>{{BOOK_NAME}}</h1>
+    <p class="subtitle">Puzzle Solutions</p>
+
+    <nav>
+        <div class="label">Jump to puzzle:</div>
+        <div class="puzzle-links">
+            {{NAV_LINKS}}
+        </div>
+    </nav>
+
+    {{PUZZLE_SECTIONS}}
+
+    <footer>&copy; 2026 Herbie's Puzzles</footer>
+</body>
+</html>
