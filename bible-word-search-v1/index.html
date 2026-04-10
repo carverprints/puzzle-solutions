@@ -13,10 +13,19 @@ header h1{font-size:28px;font-weight:700;margin-bottom:8px}
 header .subtitle{font-size:16px;color:#666;margin-bottom:4px}
 header .series{font-size:14px;color:#999}
 header .intro{font-size:14px;color:#888;margin-top:12px}
-nav{position:sticky;top:0;background:#fff;border-bottom:1px solid #e5e5e5;padding:12px 0;z-index:100;margin-bottom:30px}
-nav .nav-inner{max-width:900px;margin:0 auto;padding:0 20px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
-nav a{text-decoration:none;color:#3b82f6;font-size:12px;padding:3px 8px;border-radius:4px;border:1px solid #e5e5e5;transition:all .2s;min-width:28px;text-align:center}
-nav a:hover{background:#3b82f6;color:#fff}
+.search-bar{position:sticky;top:0;background:#fff;border-bottom:1px solid #e5e5e5;padding:12px 0;z-index:100;margin-bottom:20px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.search-inner{max-width:900px;margin:0 auto;padding:0 20px}
+.search-row{display:flex;align-items:center;gap:12px;justify-content:center;flex-wrap:wrap}
+.search-row label{font-weight:600;font-size:14px}
+.search-row input{width:100px;padding:6px 10px;border:1px solid #ccc;border-radius:6px;font-size:16px;text-align:center}
+.search-row button{padding:6px 16px;background:#3b82f6;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:14px}
+.search-row button:hover{background:#2563eb}
+.toggle-grid{background:#f3f4f6;color:#374151;border:1px solid #d1d5db;font-size:13px;padding:6px 14px}
+.toggle-grid:hover{background:#e5e7eb;color:#111}
+.page-grid{display:none;flex-wrap:wrap;gap:4px;justify-content:center;margin-top:10px;padding-top:10px;border-top:1px solid #eee}
+.page-grid.open{display:flex}
+.page-grid a{display:inline-flex;align-items:center;justify-content:center;width:32px;height:28px;font-size:11px;text-decoration:none;color:#3b82f6;border:1px solid #e5e5e5;border-radius:4px;transition:all .15s}
+.page-grid a:hover{background:#3b82f6;color:#fff}
 .theme-section{margin-bottom:40px}
 .theme-section h2{font-size:22px;font-weight:600;margin-bottom:20px;padding-bottom:10px;border-bottom:1px solid #eee}
 .puzzle-card{background:#fff;border:1px solid #e5e5e5;border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.1);margin-bottom:24px;padding:20px;overflow:hidden}
@@ -49,7 +58,17 @@ footer{text-align:center;padding:40px 0;color:#999;font-size:13px;border-top:1px
 <div class="intro">Complete answer key for all 100 puzzles</div>
 </div>
 </header>
-<nav><div class="nav-inner" id="nav"></div></nav>
+<div class="search-bar">
+<div class="search-inner">
+<div class="search-row">
+<label for="puzzleNum">Jump to Puzzle:</label>
+<input type="number" id="puzzleNum" min="1" max="100" placeholder="1-100">
+<button onclick="jumpToPuzzle()">Go</button>
+<button class="toggle-grid" id="toggleGrid" onclick="togglePageGrid()">Browse All &#9662;</button>
+</div>
+<div class="page-grid" id="pageGrid"></div>
+</div>
+</div>
 <div class="container" id="content"></div>
 <button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593; Top</button>
 <footer><div class="container">&copy; 2026 Herbie's Puzzles by CarverPrints Publishing &mdash; Word Search Through the Bible</div></footer>
@@ -161,12 +180,56 @@ const DIR_MAP={
   horizontal_lr:[0,1],horizontal_rl:[0,-1],vertical_tb:[1,0],vertical_bt:[-1,0],
   diagonal_down_right:[1,1],diagonal_down_left:[1,-1],diagonal_up_right:[-1,1],diagonal_up_left:[-1,-1]
 };
-const nav=document.getElementById("nav");
 const content=document.getElementById("content");
-PUZZLES.forEach(p=>{
+const pg=document.getElementById("pageGrid");
+for(let i=1;i<=100;i++){
   const a=document.createElement("a");
-  a.href="#puzzle-"+p.number;a.textContent=p.number;a.title=p.title;
-  nav.appendChild(a);
+  a.href="#puzzle-"+i;a.textContent=i;a.title="Puzzle "+i;
+  a.addEventListener("click",function(e){
+    e.preventDefault();
+    pg.classList.remove("open");
+    document.getElementById("toggleGrid").innerHTML="Browse All &#9662;";
+    const el=document.getElementById("puzzle-"+i);
+    if(el){
+      setTimeout(()=>{
+        const bar=document.querySelector(".search-bar");
+        const barH=bar?bar.offsetHeight:0;
+        const y=el.getBoundingClientRect().top+window.pageYOffset-barH-10;
+        window.scrollTo({top:y,behavior:"smooth"});
+      },50);
+    }
+  });
+  pg.appendChild(a);
+}
+function togglePageGrid(){
+  const grid=document.getElementById("pageGrid");
+  const btn=document.getElementById("toggleGrid");
+  if(grid.classList.contains("open")){
+    grid.classList.remove("open");
+    btn.innerHTML="Browse All &#9662;";
+  }else{
+    grid.classList.add("open");
+    btn.innerHTML="Close &#9652;";
+  }
+}
+function jumpToPuzzle(){
+  const n=parseInt(document.getElementById("puzzleNum").value);
+  if(n>=1&&n<=100){
+    pg.classList.remove("open");
+    document.getElementById("toggleGrid").innerHTML="Browse All &#9662;";
+    const el=document.getElementById("puzzle-"+n);
+    if(el){
+      setTimeout(()=>{
+        const bar=document.querySelector(".search-bar");
+        const barH=bar?bar.offsetHeight:0;
+        const y=el.getBoundingClientRect().top+window.pageYOffset-barH-10;
+        window.scrollTo({top:y,behavior:"smooth"});
+      },50);
+    }
+  }
+}
+document.getElementById("puzzleNum").addEventListener("keydown",e=>{
+  if(e.key==="Enter")jumpToPuzzle();
 });
 let currentTheme=-1;
 SUB_THEMES.forEach((name,ti)=>{
