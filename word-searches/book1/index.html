@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Search Volume 1 — Solutions | Herbie's Puzzles</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #333;
+            background: #fafafa;
+            padding: 1.5rem 0.75rem;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+        h1 { font-size: 1.4rem; margin-bottom: 0.25rem; }
+        .subtitle { color: #666; font-size: 0.95rem; margin-bottom: 1.25rem; }
+        nav { margin-bottom: 1.5rem; }
+        nav .label { font-weight: 600; font-size: 0.9rem; margin-bottom: 0.5rem; }
+        .page-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+        }
+        .page-links a {
+            display: inline-block;
+            min-width: 2.4rem;
+            height: 2.4rem;
+            line-height: 2.4rem;
+            text-align: center;
+            background: #e8f0fe;
+            color: #2563eb;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            padding: 0 0.4rem;
+        }
+        .page-links a:hover { background: #c7d8f8; }
+        .solution-page {
+            margin-bottom: 2rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid #e0e0e0;
+        }
+        .solution-page:first-of-type { border-top: none; }
+        .solution-page h2 {
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+            color: #222;
+        }
+        .solution-page img {
+            width: 100%;
+            height: auto;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+        }
+        .back-top {
+            display: inline-block;
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: #2563eb;
+            text-decoration: none;
+        }
+        .back-top:hover { text-decoration: underline; }
+        footer {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e0e0e0;
+            color: #999;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body id="top">
+    <h1>Word Search Volume 1</h1>
+    <p class="subtitle">Puzzle Solutions — 300 Puzzles (75 pages, 4 per page)</p>
+
+    <nav>
+        <div class="label">Jump to puzzle number:</div>
+        <div class="page-links">
+            <a href="#page-1">1–4</a>
+            <a href="#page-2">5–8</a>
+            <a href="#page-3">9–12</a>
+            <a href="#page-4">13–16</a>
+            <a href="#page-5">17–20</a>
+            <a href="#page-6">21–24</a>
+            <a href="#page-7">25–28</a>
+            <a href="#page-8">29–32</a>
+            <a href="#page-9">33–36</a>
+            <a href="#page-10">37–40</a>
+            <a href="#page-11">41–44</a>
+            <a href="#page-12">45–48</a>
+            <a href="#page-13">49–52</a>
+            <a href="#page-14">53–56</a>
+            <a href="#page-15">57–60</a>
+            <a href="#page-16">61–64</a>
+            <a href="#page-17">65–68</a>
+            <a href="#page-18">69–72</a>
+            <a href="#page-19">73–76</a>
+            <a href="#page-20">77–80</a>
+            <a href="#page-21">81–84</a>
+            <a href="#page-22">85–88</a>
+            <a href="#page-23">89–92</a>
+            <a href="#page-24">93–96</a>
+            <a href="#page-25">97–100</a>
+            <a href="#page-26">101–104</a>
+            <a href="#page-27">105–108</a>
+            <a href="#page-28">109–112</a>
+            <a href="#page-29">113–116</a>
+            <a href="#page-30">117–120</a>
+            <a href="#page-31">121–124</a>
+            <a href="#page-32">125–128</a>
+            <a href="#page-33">129–132</a>
+            <a href="#page-34">133–136</a>
+            <a href="#page-35">137–140</a>
+            <a href="#page-36">141–144</a>
+            <a href="#page-37">145–148</a>
+            <a href="#page-38">149–152</a>
+            <a href="#page-39">153–156</a>
+            <a href="#page-40">157–160</a>
+            <a href="#page-41">161–164</a>
+            <a href="#page-42">165–168</a>
+            <a href="#page-43">169–172</a>
+            <a href="#page-44">173–176</a>
+            <a href="#page-45">177–180</a>
+            <a href="#page-46">181–184</a>
+            <a href="#page-47">185–188</a>
+            <a href="#page-48">189–192</a>
+            <a href="#page-49">193–196</a>
+            <a href="#page-50">197–200</a>
+            <a href="#page-51">201–204</a>
+            <a href="#page-52">205–208</a>
+            <a href="#page-53">209–212</a>
+            <a href="#page-54">213–216</a>
+            <a href="#page-55">217–220</a>
+            <a href="#page-56">221–224</a>
+            <a href="#page-57">225–228</a>
+            <a href="#page-58">229–232</a>
+            <a href="#page-59">233–236</a>
+            <a href="#page-60">237–240</a>
+            <a href="#page-61">241–244</a>
+            <a href="#page-62">245–248</a>
+            <a href="#page-63">249–252</a>
+            <a href="#page-64">253–256</a>
+            <a href="#page-65">257–260</a>
+            <a href="#page-66">261–264</a>
+            <a href="#page-67">265–268</a>
+            <a href="#page-68">269–272</a>
+            <a href="#page-69">273–276</a>
+            <a href="#page-70">277–280</a>
+            <a href="#page-71">281–284</a>
+            <a href="#page-72">285–288</a>
+            <a href="#page-73">289–292</a>
+            <a href="#page-74">293–296</a>
+            <a href="#page-75">297–300</a>
+        </div>
+    </nav>
+
+    <div class="solution-page" id="page-1"><h2>Puzzles 1–4</h2><img src="images/puzzle-01.jpg" alt="Solutions for puzzles 1 through 4" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-2"><h2>Puzzles 5–8</h2><img src="images/puzzle-02.jpg" alt="Solutions for puzzles 5 through 8" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-3"><h2>Puzzles 9–12</h2><img src="images/puzzle-03.jpg" alt="Solutions for puzzles 9 through 12" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-4"><h2>Puzzles 13–16</h2><img src="images/puzzle-04.jpg" alt="Solutions for puzzles 13 through 16" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-5"><h2>Puzzles 17–20</h2><img src="images/puzzle-05.jpg" alt="Solutions for puzzles 17 through 20" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-6"><h2>Puzzles 21–24</h2><img src="images/puzzle-06.jpg" alt="Solutions for puzzles 21 through 24" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-7"><h2>Puzzles 25–28</h2><img src="images/puzzle-07.jpg" alt="Solutions for puzzles 25 through 28" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-8"><h2>Puzzles 29–32</h2><img src="images/puzzle-08.jpg" alt="Solutions for puzzles 29 through 32" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-9"><h2>Puzzles 33–36</h2><img src="images/puzzle-09.jpg" alt="Solutions for puzzles 33 through 36" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-10"><h2>Puzzles 37–40</h2><img src="images/puzzle-10.jpg" alt="Solutions for puzzles 37 through 40" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-11"><h2>Puzzles 41–44</h2><img src="images/puzzle-11.jpg" alt="Solutions for puzzles 41 through 44" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-12"><h2>Puzzles 45–48</h2><img src="images/puzzle-12.jpg" alt="Solutions for puzzles 45 through 48" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-13"><h2>Puzzles 49–52</h2><img src="images/puzzle-13.jpg" alt="Solutions for puzzles 49 through 52" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-14"><h2>Puzzles 53–56</h2><img src="images/puzzle-14.jpg" alt="Solutions for puzzles 53 through 56" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-15"><h2>Puzzles 57–60</h2><img src="images/puzzle-15.jpg" alt="Solutions for puzzles 57 through 60" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-16"><h2>Puzzles 61–64</h2><img src="images/puzzle-16.jpg" alt="Solutions for puzzles 61 through 64" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-17"><h2>Puzzles 65–68</h2><img src="images/puzzle-17.jpg" alt="Solutions for puzzles 65 through 68" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-18"><h2>Puzzles 69–72</h2><img src="images/puzzle-18.jpg" alt="Solutions for puzzles 69 through 72" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-19"><h2>Puzzles 73–76</h2><img src="images/puzzle-19.jpg" alt="Solutions for puzzles 73 through 76" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-20"><h2>Puzzles 77–80</h2><img src="images/puzzle-20.jpg" alt="Solutions for puzzles 77 through 80" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-21"><h2>Puzzles 81–84</h2><img src="images/puzzle-21.jpg" alt="Solutions for puzzles 81 through 84" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-22"><h2>Puzzles 85–88</h2><img src="images/puzzle-22.jpg" alt="Solutions for puzzles 85 through 88" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-23"><h2>Puzzles 89–92</h2><img src="images/puzzle-23.jpg" alt="Solutions for puzzles 89 through 92" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-24"><h2>Puzzles 93–96</h2><img src="images/puzzle-24.jpg" alt="Solutions for puzzles 93 through 96" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-25"><h2>Puzzles 97–100</h2><img src="images/puzzle-25.jpg" alt="Solutions for puzzles 97 through 100" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-26"><h2>Puzzles 101–104</h2><img src="images/puzzle-26.jpg" alt="Solutions for puzzles 101 through 104" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-27"><h2>Puzzles 105–108</h2><img src="images/puzzle-27.jpg" alt="Solutions for puzzles 105 through 108" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-28"><h2>Puzzles 109–112</h2><img src="images/puzzle-28.jpg" alt="Solutions for puzzles 109 through 112" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-29"><h2>Puzzles 113–116</h2><img src="images/puzzle-29.jpg" alt="Solutions for puzzles 113 through 116" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-30"><h2>Puzzles 117–120</h2><img src="images/puzzle-30.jpg" alt="Solutions for puzzles 117 through 120" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-31"><h2>Puzzles 121–124</h2><img src="images/puzzle-31.jpg" alt="Solutions for puzzles 121 through 124" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-32"><h2>Puzzles 125–128</h2><img src="images/puzzle-32.jpg" alt="Solutions for puzzles 125 through 128" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-33"><h2>Puzzles 129–132</h2><img src="images/puzzle-33.jpg" alt="Solutions for puzzles 129 through 132" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-34"><h2>Puzzles 133–136</h2><img src="images/puzzle-34.jpg" alt="Solutions for puzzles 133 through 136" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-35"><h2>Puzzles 137–140</h2><img src="images/puzzle-35.jpg" alt="Solutions for puzzles 137 through 140" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-36"><h2>Puzzles 141–144</h2><img src="images/puzzle-36.jpg" alt="Solutions for puzzles 141 through 144" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-37"><h2>Puzzles 145–148</h2><img src="images/puzzle-37.jpg" alt="Solutions for puzzles 145 through 148" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-38"><h2>Puzzles 149–152</h2><img src="images/puzzle-38.jpg" alt="Solutions for puzzles 149 through 152" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-39"><h2>Puzzles 153–156</h2><img src="images/puzzle-39.jpg" alt="Solutions for puzzles 153 through 156" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-40"><h2>Puzzles 157–160</h2><img src="images/puzzle-40.jpg" alt="Solutions for puzzles 157 through 160" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-41"><h2>Puzzles 161–164</h2><img src="images/puzzle-41.jpg" alt="Solutions for puzzles 161 through 164" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-42"><h2>Puzzles 165–168</h2><img src="images/puzzle-42.jpg" alt="Solutions for puzzles 165 through 168" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-43"><h2>Puzzles 169–172</h2><img src="images/puzzle-43.jpg" alt="Solutions for puzzles 169 through 172" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-44"><h2>Puzzles 173–176</h2><img src="images/puzzle-44.jpg" alt="Solutions for puzzles 173 through 176" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-45"><h2>Puzzles 177–180</h2><img src="images/puzzle-45.jpg" alt="Solutions for puzzles 177 through 180" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-46"><h2>Puzzles 181–184</h2><img src="images/puzzle-46.jpg" alt="Solutions for puzzles 181 through 184" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-47"><h2>Puzzles 185–188</h2><img src="images/puzzle-47.jpg" alt="Solutions for puzzles 185 through 188" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-48"><h2>Puzzles 189–192</h2><img src="images/puzzle-48.jpg" alt="Solutions for puzzles 189 through 192" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-49"><h2>Puzzles 193–196</h2><img src="images/puzzle-49.jpg" alt="Solutions for puzzles 193 through 196" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-50"><h2>Puzzles 197–200</h2><img src="images/puzzle-50.jpg" alt="Solutions for puzzles 197 through 200" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-51"><h2>Puzzles 201–204</h2><img src="images/puzzle-51.jpg" alt="Solutions for puzzles 201 through 204" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-52"><h2>Puzzles 205–208</h2><img src="images/puzzle-52.jpg" alt="Solutions for puzzles 205 through 208" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-53"><h2>Puzzles 209–212</h2><img src="images/puzzle-53.jpg" alt="Solutions for puzzles 209 through 212" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-54"><h2>Puzzles 213–216</h2><img src="images/puzzle-54.jpg" alt="Solutions for puzzles 213 through 216" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-55"><h2>Puzzles 217–220</h2><img src="images/puzzle-55.jpg" alt="Solutions for puzzles 217 through 220" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-56"><h2>Puzzles 221–224</h2><img src="images/puzzle-56.jpg" alt="Solutions for puzzles 221 through 224" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-57"><h2>Puzzles 225–228</h2><img src="images/puzzle-57.jpg" alt="Solutions for puzzles 225 through 228" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-58"><h2>Puzzles 229–232</h2><img src="images/puzzle-58.jpg" alt="Solutions for puzzles 229 through 232" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-59"><h2>Puzzles 233–236</h2><img src="images/puzzle-59.jpg" alt="Solutions for puzzles 233 through 236" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-60"><h2>Puzzles 237–240</h2><img src="images/puzzle-60.jpg" alt="Solutions for puzzles 237 through 240" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-61"><h2>Puzzles 241–244</h2><img src="images/puzzle-61.jpg" alt="Solutions for puzzles 241 through 244" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-62"><h2>Puzzles 245–248</h2><img src="images/puzzle-62.jpg" alt="Solutions for puzzles 245 through 248" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-63"><h2>Puzzles 249–252</h2><img src="images/puzzle-63.jpg" alt="Solutions for puzzles 249 through 252" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-64"><h2>Puzzles 253–256</h2><img src="images/puzzle-64.jpg" alt="Solutions for puzzles 253 through 256" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-65"><h2>Puzzles 257–260</h2><img src="images/puzzle-65.jpg" alt="Solutions for puzzles 257 through 260" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-66"><h2>Puzzles 261–264</h2><img src="images/puzzle-66.jpg" alt="Solutions for puzzles 261 through 264" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-67"><h2>Puzzles 265–268</h2><img src="images/puzzle-67.jpg" alt="Solutions for puzzles 265 through 268" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-68"><h2>Puzzles 269–272</h2><img src="images/puzzle-68.jpg" alt="Solutions for puzzles 269 through 272" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-69"><h2>Puzzles 273–276</h2><img src="images/puzzle-69.jpg" alt="Solutions for puzzles 273 through 276" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-70"><h2>Puzzles 277–280</h2><img src="images/puzzle-70.jpg" alt="Solutions for puzzles 277 through 280" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-71"><h2>Puzzles 281–284</h2><img src="images/puzzle-71.jpg" alt="Solutions for puzzles 281 through 284" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-72"><h2>Puzzles 285–288</h2><img src="images/puzzle-72.jpg" alt="Solutions for puzzles 285 through 288" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-73"><h2>Puzzles 289–292</h2><img src="images/puzzle-73.jpg" alt="Solutions for puzzles 289 through 292" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-74"><h2>Puzzles 293–296</h2><img src="images/puzzle-74.jpg" alt="Solutions for puzzles 293 through 296" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+    <div class="solution-page" id="page-75"><h2>Puzzles 297–300</h2><img src="images/puzzle-75.jpg" alt="Solutions for puzzles 297 through 300" loading="lazy"><a class="back-top" href="#top">Back to top</a></div>
+
+    <footer>&copy; 2026 Herbie's Puzzles</footer>
+</body>
+</html>
