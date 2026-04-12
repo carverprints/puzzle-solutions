@@ -128,6 +128,7 @@ P.forEach(p=>{
 function toggleBrowse(){bg.classList.toggle('open')}
 
 function jumpTo(num){
+  bg.classList.remove('open');
   const n=num||parseInt(document.getElementById('jumpInput').value);
   if(!n||n<1||n>400)return;
   const p=P.find(x=>x.n===n);
